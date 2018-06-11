@@ -1,0 +1,24 @@
+{
+  "name": "sos1718-jun-vvp",
+  "version": "1.0.0",
+  "description": "- **Student**   - [Veronica Vela Palomo](https://github.com/kkdekiki) - **Project description**:I will analyze the relationship between the causes of mortality due to traffic accidents, suicide and breast cancer, in 2013.  - **Repository**: [sos1718-jun-vvp](https://github.com/kkdekiki/sos1718-jun-vvp.git) - **URL**:https://git.heroku.com/sos1718-jun-vvp.git - **API**:",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkdekiki/sos1718-jun-vvp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kkdekiki/sos1718-jun-vvp/issues"
+  },
+  "homepage": "https://github.com/kkdekiki/sos1718-jun-vvp#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  }
+}
