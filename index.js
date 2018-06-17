@@ -26,3 +26,7 @@ app.put(m + "/:country/:year", mortality.putRecursoConcreto);
 app.delete(m,mortality.deleteCollection);
 app.delete(m+"/:country",mortality.deleteRecurso);
 app.delete(m+"/:country/:year",mortality.deleteRecursoConcreto);
+
+app.get("/api/v1/mortality-stats/docs",(req,res)=>{
+   res.redirect("https://documenter.getpostman.com/view/360401/RWEfMK4X");
+});

@@ -486,11 +486,11 @@ module.exports.putRecursoConcreto = (request, response) => {
                     if (countryPar === updateStat.country && yearPar === parseInt(updateStat.year)) {
                         db.update({country: countryPar, year: yearPar}, updateStat);
                         console.log("INFO: Modifying data with country " + countryPar + " with data " + JSON.stringify(updateStat, 2, null));
-                        response.send(updateStat); // return the updated contact
+                        response.send(updateStat); // return the updated contact//meter un 200?
                     }
                     else {
                         console.log("WARNING: There are not any data with country " + countryPar);
-                        response.sendStatus(400); // not found
+                        response.sendStatus(404); // not found
                     }
                 }
             });
@@ -528,7 +528,7 @@ module.exports.deleteRecurso = (request, response) => {
     var country = request.params.country;
     if (!country) {
         console.log("WARNING: New DELETE");
-        response.sendStatus(400); // bad request
+        response.sendStatus(400); 
     }
     else {
         console.log("INFO: New DELETE");
@@ -541,11 +541,11 @@ module.exports.deleteRecurso = (request, response) => {
                 console.log("INFO: Stats remove");
                 if (stats === 1) {
                     console.log("INFO: The stats is removed");
-                    response.sendStatus(204); // no content
+                    response.sendStatus(204);
                 }
                 else {
                     console.log("WARNING: There are no stats to delete");
-                    response.send([]); // not found
+                    response.send([]); 
                 }
             }
         });

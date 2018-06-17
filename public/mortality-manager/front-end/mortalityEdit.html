@@ -1,0 +1,24 @@
+<h2>Edit Mortality</h2> 
+              <table class="table">
+                  <thead>
+                  <tr>
+                      <th>Country</th>
+                      <th>Year</th>
+                      <th>Transport</th>
+                      <th>Suicide</th>
+                      <th>Cancer</th>
+                     
+                  </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>{{updateStat.country}}</td>
+                          <td><input class ="form-control" ng-model="updateStat.year"/></td>
+                          <td><input class ="form-control" ng-model="updateStat.transport"/></td>
+                          <td><input class ="form-control" ng-model="updateStat.suicide"/></td>
+                          <td><input class ="form-control" ng-model="updateStat.cancer"/></td>
+                          <td><button class="btn btn-primary"ng-click= "update(updateStat)">Update</button></td>
+
+                      </tr>
+                </tbody>
+            </table

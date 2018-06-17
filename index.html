@@ -1,51 +1,40 @@
-<!DOCTYPE html>
-<html>
+<html ng-app="managerApp">
 
 <head>
 
-    <title>TRABAJO ASIGNATURA SISTEMAS ORIENTADOS A SERVICIOS</title>
-    <h1>Universidad de Sevilla</h1>
+
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+    <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="/managerApp.js"></script>
+    
+        <!--Hightchart-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    
+        <!--Geochart-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+        <!--Zingchart-->
+    
+        <!--Vis-->
+    <script type="text/javascript" src="/bower_components/vis/dist/vis.min.js"></script>
+    <link href="/bower_components/vis/dist/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+        
+    
+  
+        <!--Mortality Stats-->
+    <script type="text/javascript" src="/mortality-manager/front-end/mortalityEditCtrl.js"></script>
+    <script type="text/javascript" src="/mortality-manager/front-end/mortalityListCntrl.js"></script>
+    <script type="text/javascript" src="/mortality-manager/analytics/mortalityStatsView1.js"></script>
+    
 </head>
-
 <body>
-    <ul>
-        <li>
-            <h3>SOS1718-JUN-VVP</h3>
-        </li>
-
-        <li>
-            <h3>Project description:</h3>I will analyze the relationship between the causes of mortality due to traffic accidents, suicide and breast cancer, in 2013.</li>
-        <li>
-            <h3>Repository:</h3> <a href="https://github.com/kkdekiki/sos1718-jun-vvp.git">sos1718-jun-vvp</a></li>
-        <li>
-            <h3>**URL**: [TBD]:</h3><a href="https://git.heroku.com/sos1718-jun-vvp.git">Enlace heroku</a></li>
-
-        <div> <br/>
-            <h3>Verónica (Data: mortality-stats) </h3>
-            <ul>
-                
-
-                <li><a href=https://github.com/kkdekiki>GitHub personal</a></li>
-                <li><a href="distintas vistas y front end"> API Verónica </a></li>
-
-
-            </ul>
-        </div>
-        <h5>-----------------------------------------</h5>
-
-        <ul>
-
-            <li>
-                <h3>API:</h3>
-            </li>
-            <li> <a href="URL POSTMAN"</a> ( developed by Verónica Vela Palomo ) </li>
-
-
-
-
-        </ul>
-
-
+    <div ng-view>
+    </div>
 </body>
-
 </html>
