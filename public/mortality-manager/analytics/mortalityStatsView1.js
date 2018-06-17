@@ -20,12 +20,12 @@ angular
 
                 function drawRegionsMap() {
                     var finalData = [
-                        ['Country', 'Mortality-Transport', 'Mortality-Suicide', 'Mortality-Cancer']
+                        ['Country', 'Mortality-Transport', 'Mortality-Suicide']
                     ];
 
                     console.log(response.data);
                     response.data.forEach(function(item) {
-                        finalData.push([item.country, Number(item.transport), Number(item.suicide), Number(item.cancer)]);
+                        finalData.push([item.country, Number(item.transport), Number(item.suicide)]);
                     });
 
 

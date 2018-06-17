@@ -4,8 +4,10 @@
   "description": "- **Student**   - [Veronica Vela Palomo](https://github.com/kkdekiki) - **Project description**:I will analyze the relationship between the causes of mortality due to traffic accidents, suicide and breast cancer, in 2013.  - **Repository**: [sos1718-jun-vvp](https://github.com/kkdekiki/sos1718-jun-vvp.git) - **URL**:https://git.heroku.com/sos1718-jun-vvp.git - **API**:",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "test/runPhantomjs.sh",
+    "test": "protractor test/config.js",
+    "posttest": "killall phantomjs",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -19,11 +21,15 @@
   "homepage": "https://github.com/kkdekiki/sos1718-jun-vvp#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chartist": "^0.11.0",
     "cors": "^2.8.4",
     "exports": "0.0.1",
     "express": "^4.16.3",
     "mongodb": "^3.0.10",
+    "newman": "^3.9.4",
     "path": "^0.12.7",
+    "phantomjs": "^2.1.7",
+    "protractor": "^5.3.2",
     "request": "^2.87.0"
   }
 }

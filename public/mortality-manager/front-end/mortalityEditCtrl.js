@@ -22,19 +22,19 @@ angular
 
                 });
         }
-        $scope.update = function(newStat) {
-            $scope.newStat.transport = Number($scope.newStat.transport);
-            $scope.newStat.suicide = Number($scope.newStat.suicide);
-            $scope.newStat.cancer = Number($scope.newStat.cancer);
+        $scope.update = function(updateStat) {
+            $scope.updateStat.transport = Number($scope.updateStat.transport);
+            $scope.updateStat.suicide = Number($scope.updateStat.suicide);
+            $scope.updateStat.cancer = Number($scope.updateStat.cancer);
             
 
             $http
-                .put($scope.url + "/" + newStat.country, {
-                    country: newStat.country,
-                    year: newStat.year,
-                    transport: newStat.transport,
-                    suicide: newStat.suicide,
-                    cancer: newStat.cancer
+                .put($scope.url + "/" + updateStat.country, {
+                    country: updateStat.country,
+                    year: updateStat.year,
+                    transport: updateStat.transport,
+                    suicide: updateStat.suicide,
+                    cancer: updateStat.cancer
                 })
                 .then(function(response) {
                     console.log("Stat Updated 2");
@@ -46,7 +46,7 @@ angular
                             alert("OK");
                             break;
                     }
-                    $location.path("/");
+                    $location.path("/mortality");
 
                 });
         };

@@ -42,7 +42,7 @@ angular
         $http
             .get("/proxy1")
             .then(function(res) {
-                dato1 = funciondatos();
+                dato1 = res.data;
                 total.push(dato1);
 
                 Highcharts.chart('container01', {
@@ -62,7 +62,7 @@ angular
                         }
                     },
                     xAxis: {
-                        categories: dato2.map(function(d) {
+                        categories: dato1.map(function(d) {
                             return d.country;
                         })
                     },
@@ -74,33 +74,16 @@ angular
                     series: [{
                         name: 'Champions motoGP',
                         data: dato1.map(function(d) {
-                            return d.rider;
+                            return Number(d.win);
                         })
                     }, {
-                        name: 'Usage Internet',
+                        name: 'Transport mortality',
                         data: dato2.map(function(d) {
                             return Number(d.transport);
                         })
                     }]
                 });
 
-
-                function funciondatos() {
-                    var ret = [];
-
-                    res.data.forEach(function(d) {
-                        res.data.country = d.country;
-                        res.data.rider = d.rider;
-                        ret.push({
-                            "country": res.data.country,
-                            "rider": res.data.rider,
-                        });
-
-                    });
-
-                    return ret;
-
-                }
             });
 
 }]);
