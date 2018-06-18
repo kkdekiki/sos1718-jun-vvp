@@ -28,7 +28,7 @@ angular
                 }
             }
 
-            var chart = c3.genepopulation({
+            var chart = c3.generate({
                 data: {
                     columns: [
                         population,

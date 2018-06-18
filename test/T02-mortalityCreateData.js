@@ -5,7 +5,7 @@ describe('Add stats', function() {
         element.all(by.repeater("stat in mortality")).then(function(initialData) {
             //browser.driver.sleep(2000);
 
-            element(by.model('newStat.country')).sendKeys("abcdesss");
+            element(by.model('newStat.country')).sendKeys("prueba");
             element(by.model('newStat.year')).sendKeys(2013);
             element(by.model('newStat.transport')).sendKeys(20.1);
             element(by.model('newStat.suicide')).sendKeys(20.2);
