@@ -5,12 +5,12 @@
 angular
     .module("managerApp")
     .controller("integration3Ctrl", ["$scope", "$http", function($scope, $http) {
-        var res = [];
+        
         var occupation = ['occupation'];
         var cancer = ['cancer'];
         
 
-        $http.get("https: //sos1718-10.herokuapp.com/api/v1/buses").then(function(response) {
+        $http.get("https://sos1718-10.herokuapp.com/api/v1/buses").then(function(response) {
             for (var j = 0; j < response.data.length; j++) {
                 occupation.push(response.data[j].occupation);
             }
@@ -23,7 +23,7 @@ angular
                     cancer.push(response.data[i].cancer);
                 
                 }
-                var chart = c3.generate({
+                var chartc3 = c3.generate({
                     data: {
                         columns: [
                             occupation,
