@@ -48,7 +48,7 @@ controller("normal2Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
                     text: 'Transport and Intesity actual to carbon'
                 },
                 subtitle: {
-                    text: 'Source: Heinz  2003'
+                    text: ''
                 },
                 xAxis: {
                     title: {

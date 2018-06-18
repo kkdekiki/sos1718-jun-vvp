@@ -59,7 +59,7 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
                         }]
                     ];
 
-                    new Chartist.Pie('ct-chart', data, options, responsiveOptions);
+                    new Chartist.Pie('.ct-chart', data, options, responsiveOptions);
 
 
                 });
