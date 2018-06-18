@@ -36,19 +36,19 @@ controller("integration4Ctrl", ["$scope", "$http", "$httpParamSerializer", funct
 
 
                 "scale-x": {
-                    "values": country,
+                    "values": country
 
                 },
 
                 "series": [{
 
-                        "values": suicide,
+                        "values": suicide
 
 
                     },
                     {
 
-                        "values": adult,
+                        "values": adult
 
                     },
 
