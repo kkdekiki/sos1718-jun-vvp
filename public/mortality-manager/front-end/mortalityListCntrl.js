@@ -1,4 +1,5 @@
-angular
+/*global angular*/
+    angular
     .module("managerApp")
     .controller("mortalityListCntrl", ["$scope", "$http", function($scope, $http) {
         console.log("Cotroller initialized");
@@ -117,7 +118,56 @@ angular
 
                 });
         };
+        
+        $scope.busquedaTransport = function(dato) {
 
+        $http.get($scope.url + "?" + "transport=" + dato)
+
+            .then(function successCallback(response) {
+                console.log("busqueda por transporte realizada correctamente");
+                alert("búsqueda con éxito");
+                $scope.database = response.data;
+
+            }, function errorCallback(response) {
+                console.log("Error al cargar los datos");
+                $scope.database = [];
+
+            });
+        };
+        
+        $scope.busquedaSuicide = function(dato) {
+
+        $http.get($scope.url + "?" + "suicide=" + dato)
+
+            .then(function successCallback(response) {
+                console.log("busqueda por suicidio realizada correctamente");
+                alert("búsqueda con éxito");
+                $scope.database = response.data;
+
+            }, function errorCallback(response) {
+                console.log("Error al cargar los datos");
+                $scope.database = [];
+
+            });
+        };
+        
+        $scope.busquedaCancer = function(dato) {
+
+        $http.get($scope.url + "?" + "cancer=" + dato)
+
+            .then(function successCallback(response) {
+                console.log("busqueda por cancer realizada correctamente");
+                alert("búsqueda con éxito");
+                $scope.database = response.data;
+
+            }, function errorCallback(response) {
+                console.log("Error al cargar los datos");
+                $scope.database = [];
+
+            });
+        };
+    
+       
         $scope.getData = function() {
 
             $http
