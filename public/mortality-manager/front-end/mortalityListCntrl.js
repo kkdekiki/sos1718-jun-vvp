@@ -126,11 +126,11 @@
             .then(function successCallback(response) {
                 console.log("busqueda por transporte realizada correctamente");
                 alert("búsqueda con éxito");
-                $scope.database = response.data;
+                $scope.mortality = response.data;
 
             }, function errorCallback(response) {
                 console.log("Error al cargar los datos");
-                $scope.database = [];
+                $scope.mortality = [];
 
             });
         };
@@ -142,11 +142,11 @@
             .then(function successCallback(response) {
                 console.log("busqueda por suicidio realizada correctamente");
                 alert("búsqueda con éxito");
-                $scope.database = response.data;
+                $scope.mortality = response.data;
 
             }, function errorCallback(response) {
                 console.log("Error al cargar los datos");
-                $scope.database = [];
+                $scope.mortality = [];
 
             });
         };
@@ -158,14 +158,15 @@
             .then(function successCallback(response) {
                 console.log("busqueda por cancer realizada correctamente");
                 alert("búsqueda con éxito");
-                $scope.database = response.data;
+                $scope.mortality = response.data;
 
             }, function errorCallback(response) {
                 console.log("Error al cargar los datos");
-                $scope.database = [];
+                $scope.mortality = [];
 
             });
         };
+        
     
        
         $scope.getData = function() {
@@ -188,15 +189,47 @@
                 });
         };
 
-        $scope.paginacion = function() {
+        $scope.paginacion = function(limit, offset) {
+        console.log("Hemos entrado en el pagination");
 
+        $scope.currentPage = 1;
+        $scope.offset = offset;
+        var pages = [];
+        if ($scope.limit > 0) {
             $http
-                .get($scope.url + "&limit=" + $scope.limit + "&offset=" + $scope.offset)
+                .get($scope.url)
                 .then(function(response) {
-                    $scope.mortality = response.data;
+                    console.log("dentro del get de pagination");
+
+                    for (var i = 1; i <= ((response.data.length - $scope.offset) / $scope.limit); i++) {
+                        pages.push(i);
+
+                    }
+                    if (pages.length * $scope.limit < response.data.length - $scope.offset) {
+                        pages.push(pages.length + 1);
+                    }
+                    $scope.pages = pages;
+                    document.getElementById("numberPagination").disabled = false;
                 });
 
-        };
+            $http.get($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset)
+                .then(function successCallback(response) {
+                    console.log("estamos dentro del limit y offset y hemos cogido los datos correctamente");
+                    $scope.mortality = response.data;
+
+                }, function errorCallback(response) {
+                    console.log("Error al cargar los datos, no se encuentran");
+                    $scope.mortality = [];
+
+                });
+
+        }
+        else {
+            refresh();
+        }
+
+    };
+        
         //Paginación
         $scope.viewby = 0;
         $scope.totalItems = function() {
