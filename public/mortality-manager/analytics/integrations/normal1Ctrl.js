@@ -10,28 +10,19 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
     var name = [];
 
     $http
-        .get("api/v1/mortality-stats")
-        .then(function(res) {
-
-
-
-            for (var i = 0; i < res.data.length; i++) {
-
-                var x = res.data[i];
-
-                country.push(x.country);
-                suicide.push(x.suicide);
-
-            }
+        .get("api/v1/mortality-stats").then(function(res) {
+               for (var i = 0; i < res.data.length; i++) {
+                    suicide.push(res.data[i].suicide);
+                }
 
             $http
                 .get("https://restcountries.eu/rest/v2/all")
                 .then(function(response) {
-                    for (var j = 0; j < 2; j++) {
-                        var y = response.data[j];
-                        population.push(Number(y.population));
-                        name.push(y.name);
-                    }
+                   for (var i = 0; i < response.data.length; i++) {
+
+                    population.push(response.data[i].population);
+                    name.push(response.data[i].name);
+                }
 
                     var data = {
                         labels: [country[0], name[0]],
@@ -59,7 +50,7 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
                         }]
                     ];
 
-                    new Chartist.Pie('.ct-chart', data, options, responsiveOptions);
+                    new Chartist.Pie('ct-chart', data, options, responsiveOptions);
 
 
                 });
