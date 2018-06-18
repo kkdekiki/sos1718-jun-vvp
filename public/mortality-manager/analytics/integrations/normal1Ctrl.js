@@ -3,11 +3,11 @@
 angular.module("managerApp").
 controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($scope, $http, $httpParamSerializer) {
 
-    var datos = [];
+    
     var country = [];
     var suicide = [];
-    var population = [];
-    var name = [];
+    var weight = [];
+    var height = [];
 
     $http
         .get("api/v1/mortality-stats").then(function(res) {
@@ -16,17 +16,17 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
                 }
 
             $http
-                .get("https://restcountries.eu/rest/v2/all")
+                .get("http://api.suredbits.com/nfl/v0/players/brady/tom")
                 .then(function(response) {
                    for (var i = 0; i < response.data.length; i++) {
 
-                    population.push(response.data[i].population);
-                    name.push(response.data[i].name);
+                    weight.push(response.data[i].weight);
+                    height.push(response.data[i].height);
                 }
 
                     var data = {
-                        labels: [country[0], name[0]],
-                        series: [suicide[0], population[0]]
+                        labels: [country[0], height[0]],
+                        series: [suicide[0], weight[0]]
                     };
 
                     var options = {
