@@ -62,7 +62,7 @@ angular
                         }
                     },
                     xAxis: {
-                        categories: dato1.map(function(d) {
+                        categories: dato2.map(function(d) {
                             return d.country;
                         })
                     },
