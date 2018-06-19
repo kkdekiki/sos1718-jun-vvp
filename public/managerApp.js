@@ -57,6 +57,9 @@ angular.module("managerApp", ["ngRoute"]).config(function($routeProvider) {
         }).when("/integrations", {
         templateUrl: "/integrations.html"
         
+        }).when("/about", {
+        templateUrl: "/about.html"
+        
         });
         
     console.log("App initialized and configured");
