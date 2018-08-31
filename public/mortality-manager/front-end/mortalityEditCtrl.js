@@ -21,11 +21,15 @@ angular
                     $scope.updateStat = [];
 
                 });
-        }
+        }console.log("0");
         $scope.update = function(updateStat) {
+            console.log("1");
             $scope.updateStat.transport = Number($scope.updateStat.transport);
+            console.log("a");
             $scope.updateStat.suicide = Number($scope.updateStat.suicide);
+            console.log("b");
             $scope.updateStat.cancer = Number($scope.updateStat.cancer);
+            console.log("c");
             
 
             $http
@@ -35,7 +39,9 @@ angular
                     transport: updateStat.transport,
                     suicide: updateStat.suicide,
                     cancer: updateStat.cancer
+                    
                 })
+            
                 .then(function(response) {
                     console.log("Stat Updated 2");
                     switch (response.status) {
@@ -45,11 +51,12 @@ angular
                         default:
                             alert("OK");
                             break;
-                    }
+                    }console.log("d");
                     $location.path("/mortality");
-
+                    console.log("e");
                 });
-        };
+        };console.log("f");
         refresh();
+        console.log("g");
 
     }]);

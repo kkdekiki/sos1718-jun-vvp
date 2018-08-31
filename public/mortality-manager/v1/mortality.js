@@ -189,27 +189,27 @@ module.exports.getCollection = (request, response) => {
                 console.error('ERROR from data');
                 response.sendStatus(500);
             }
-            else {
+            else {console.log("a");
                 if (stats.length === 0) {
                     console.log("INFO: Any stats II");
                     response.send([]);
 
                 }
                 else if (country || year || transport || suicide || cancer) {
-                    console.log("INFO: Search by parameters");
+                    console.log("INFO: Search by parameters");console.log("b");
                     a = buscador(stats, a, country, year, transport, suicide, cancer);
                     if (a.length > 0) {
                         response.send(a);
 
                     }
-                    else {
+                    else {console.log("c");
                         console.log("INFO: Any stats with this value")
                         response.send([]);
 
                     }
                 }
 
-                else {
+                else {console.log("d");
                     console.log("INFO: GET to collection");
                     response.send(stats);
                 }
