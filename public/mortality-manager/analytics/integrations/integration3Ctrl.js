@@ -13,6 +13,7 @@ angular
         $http.get("https://sos1718-10.herokuapp.com/api/v1/buses").then(function(response) {
             for (var j = 0; j < response.data.length; j++) {
                 occupation.push(response.data[j].occupation);
+                console.log(response.data);
             }
 
 
