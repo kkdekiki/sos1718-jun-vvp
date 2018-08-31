@@ -6,29 +6,33 @@ angular
     .module("managerApp")
     .controller("integration3Ctrl", ["$scope", "$http", function($scope, $http) {
         
-        var occupation = ['occupation'];
-        var cancer = ['cancer'];
+        var occu = [];
+        var can = [];
         
 
         $http.get("https://sos1718-10.herokuapp.com/api/v1/buses").then(function(response) {
             for (var j = 0; j < response.data.length; j++) {
-                occupation.push(response.data[j].occupation);
+                occu.push(response.data[j].occupation);
                 console.log(response.data);
             }
+        
 
 
 
             $http.get("/api/v1/mortality-stats").then(function(response) {
 
                 for (var i = 0; i < response.data.length; i++) {
-                    cancer.push(response.data[i].cancer);
+                    can.push(response.data[i].cancer);
+                    
+                    console.log(can);
+                    console.log(occu);
                 
                 }
                 var chartc3 = c3.generate({
                     data: {
                         columns: [
-                            occupation,
-                            cancer
+                            occu,
+                            can
 
                         ],
                         types: {
