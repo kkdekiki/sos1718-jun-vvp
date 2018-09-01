@@ -4,7 +4,7 @@ angular.module("managerApp").
 controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($scope, $http, $httpParamSerializer) {
 
 
-      $http.get("api/v1/mortality-stats").then(function(responseBuses) {
+      $http.get("api/v1/mortality-stats").then(function(responseMort) {
             $http.get("https://sos1718-10.herokuapp.com/api/v1/motogp-stats").then(function(responseRest) {
                
                 var age = [];
@@ -15,7 +15,7 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
 
 
                     age.push([responseRest.data[i].age]);
-                    country.push(responseRest.data[i].country);
+                    country.push(responseMort.data[i].country);
                     
 
 
