@@ -17,7 +17,7 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
             }
 
             $http
-                .get("https://www.metaweather.com/api/location/search/?query=san")
+                .get("/normal1")
                 .then(function(response) {
                     for (var i = 0; i < response.data.length; i++) {
 

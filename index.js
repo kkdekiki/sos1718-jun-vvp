@@ -39,3 +39,8 @@ app.use("/proxy1", (req, res) =>{
     req.pipe(request(url)).pipe(res);
 });
 
+var apiProxy2 = "https://www.metaweather.com/api/location/search/?query=san";
+app.use("/normal1", (req, res) =>{
+    var url = apiProxy2 + req.url ; 
+    req.pipe(request(url)).pipe(res);
+});
