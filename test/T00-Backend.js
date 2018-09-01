@@ -5,7 +5,7 @@ var path = require("path");
 describe('API back-end tests', function() {
 
 	newman.run({
-			collection: require(path.join(process.cwd(), "test","D01copy.postman_collection.json")),
+			collection: require(path.join(process.cwd(), "test","D01 Copy.postman_collection.json")),
 			reporters: "cli"
 
 		},
