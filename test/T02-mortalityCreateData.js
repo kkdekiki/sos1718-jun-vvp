@@ -1,6 +1,6 @@
 describe('Add stats', function() {
     it('should add a new stats', function() {
-        browser.get('https://sos1718-jun-vvp.herokuapp.com/#!/mortality')
+        browser.get('https://sos1718-sep-vvp.herokuapp.com/#!/mortality')
         console.log("dentro del create data");
         element.all(by.repeater("stat in mortality")).then(function(initialData) {
             //browser.driver.sleep(2000);
