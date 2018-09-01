@@ -1,22 +1,19 @@
-/*global google, angular*/
+/*global zingchart, angular*/
 
 angular.module("managerApp").
 controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($scope, $http, $httpParamSerializer) {
 
 
-    var country = [];
     var suicide = [];
-    var transport = [];
-    var cancer = [];
     var title = [];
+   
 
 
     $http
         .get("api/v1/mortality-stats").then(function(res) {
             for (var i = 0; i < res.data.length; i++) {
                 suicide.push(res.data[i].suicide);
-                transport.push(res.data[i].transport);
-                cancer.push(res.data[i].cancer);
+                
             }
 
             $http
@@ -25,37 +22,90 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
                     for (var i = 0; i < response.data.length; i++) {
 
                         title.push(response.data[i].title);
+                       
 
                     }
 
-                    google.charts.load('current', { 'packages': ['corechart'] });
-                    google.charts.setOnLoadCallback(drawChart);
+                    zingchart.THEME = "classic";
 
-                    function drawChart() {
+                var myConfig = {
+                    type: "pie",
+                    backgroundColor: "#f1f1f1 #ffffff",
+                    title: {
+                        text: "Countries Population",
+                        backgroundColor: "#052C4E"
+                    },
+                    
+                    legend: {
+                        layout: "h",
+                        align: "center",
+                        verticalAlign: "bottom",
+                        toggleAction: "remove",
+                        header: {
+                            text: "County",
+                            backgroundColor: "#052C4E"
+                        },
+                        shadow: 0
+                    },
+                    plotarea: {
+                        y: 150
+                    },
+                    plot: {
+                        refAngle: 180,
+                        size: 250,
+                        valueBox: {
+                            placement: "in",
+                            offsetR: 20
+                        }
+                    },
+                    scaleR: {
+                        aperture: 180
+                    },
+                    tooltip: {
+                        text: "%t<br>Deliveries: %v<br>Percent of Shirt %npv%",
+                        textAlign: "left",
+                        shadow: 0,
+                        borderRadius: 4,
+                        borderWidth: 2,
+                        borderColor: "#fff"
+                    },
+                    series: [{
+                            values: suicide[0],
+                            text: title[0],
+                            backgroundColor: "#2870B1"
+                        },
+                        {
+                            values: suicide[1],
+                            text: title[1],
+                            backgroundColor: "#BB1FA8"
+                        },
+                        {
+                            values: suicide[2],
+                            text: title[2],
+                            backgroundColor: "#7E971D"
+                        },
 
-                        var data = google.visualization.arrayToDataTable([
-                            
-                            [title[0], suicide[0]],
-                            [title[0], transport[0]],
-                            [title[0], cancer[0]],
-                            [title[1], suicide[1]],
-                            [title[1], transport[1]],
-                            [title[1], cancer[1]],
-                            
-                            
-                        ]);
+                        {
+                            values: suicide[3],
+                            text: title[3],
+                            backgroundColor: "#FFA72A"
 
-                        var options = {
-                            title: 'Stats'
-                        };
+                        },
+                        {
+                            values: suicide[4],
+                            text: title[4],
+                            backgroundColor: "#54004A"
+                        }
+                    ]
+                };
 
-                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                        chart.draw(data, options);
-                    }
-
+                zingchart.render({
+                    id: 'myChart',
+                    data: myConfig,
                 });
 
-        });
 
-}]);
+            });
+
+        });
+    }]);
