@@ -68,30 +68,30 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
                         borderColor: "#fff"
                     },
                     series: [{
-                            values: country[0],
-                            text: age[0],
+                            values: age[0],
+                            text: country[0],
                             backgroundColor: "#2870B1"
                         },
                         {
-                            values: country[1],
-                            text: age[1],
+                            values: age[1],
+                            text: country[1],
                             backgroundColor: "#BB1FA8"
                         },
                         {
-                            values: country[2],
-                            text: age[2],
+                            values: age[2],
+                            text: country[2],
                             backgroundColor: "#7E971D"
                         },
 
                         {
-                            values: country[3],
-                            text: age[3],
+                            values: age[3],
+                            text: country[3],
                             backgroundColor: "#FFA72A"
 
                         },
                         {
-                            values: country[4],
-                            text: age[4],
+                            values: age[4],
+                            text: country[4],
                             backgroundColor: "#54004A"
                         }
                     ]
