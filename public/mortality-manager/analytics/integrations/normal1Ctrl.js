@@ -5,7 +5,7 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
 
 
       $http.get("api/v1/mortality-stats").then(function(responseBuses) {
-            $http.get("https://sos1718-10.herokuapp.com/api/v1/motogp-statsl").then(function(responseRest) {
+            $http.get("https://sos1718-10.herokuapp.com/api/v1/motogp-stats").then(function(responseRest) {
                
                 var age = [];
                 var country=[];
