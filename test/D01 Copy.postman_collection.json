@@ -1,0 +1,943 @@
+{
+	"info": {
+		"_postman_id": "39539ab4-c5eb-4cf7-ad1f-d2b6f7d8eeef",
+		"name": "D01 Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE Collection / 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Collection loadInitialData / 201 Created",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 201\"] = responseCode.code === 201;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats/loadInitialData"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Collection loadInitialData / 409 Conflit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 409\"] = responseCode.code === 409;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats/loadInitialData"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Collection  / 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Obteniendo todos los datos\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Hay quince datos en total\"] = jsonData.length === 15;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Collection Paginación / 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Obteniendo todos los datos\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Paginación con tres datos empezando por el segundo\"] = jsonData.length === 3;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats?limit=3&offset=1",
+					"protocol": "https",
+					"host": [
+						"sos1718-sep-vvp",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"mortality-stats"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "3"
+						},
+						{
+							"key": "offset",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Collection Búsqueda country / 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Obteniendo todos los datos\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Búsqueda por country\"] = jsonData.length === 1;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats?country=spain",
+					"protocol": "https",
+					"host": [
+						"sos1718-sep-vvp",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"mortality-stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "spain"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Collection Búsqueda year / 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Obteniendo todos los datos\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Búsqueda por year\"] = jsonData.length === 15;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats?year=2013",
+					"protocol": "https",
+					"host": [
+						"sos1718-sep-vvp",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"mortality-stats"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2013"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Collection Búsqueda transport / 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Obteniendo todos los datos\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Búsqueda por transport\"] = jsonData.length === 1;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats?transport=10.7",
+					"protocol": "https",
+					"host": [
+						"sos1718-sep-vvp",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"mortality-stats"
+					],
+					"query": [
+						{
+							"key": "transport",
+							"value": "10.7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Collection Búsqueda suicide / 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Obteniendo todos los datos\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Búsqueda por suicide\"] = jsonData.length === 1;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats?suicide=8.3",
+					"protocol": "https",
+					"host": [
+						"sos1718-sep-vvp",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"mortality-stats"
+					],
+					"query": [
+						{
+							"key": "suicide",
+							"value": "8.3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Collection Búsqueda cancer / 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Obteniendo todos los datos\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Búsqueda por cancer\"] = jsonData.length === 1;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats?cancer=41.2",
+					"protocol": "https",
+					"host": [
+						"sos1718-sep-vvp",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"mortality-stats"
+					],
+					"query": [
+						{
+							"key": "cancer",
+							"value": "41.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Collection Búsqueda y paginación / 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Obteniendo todos los datos\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Búsqueda y paginación con 5 elementos\"] = jsonData.length === 5;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats?year=2013&limit=5&offset=0",
+					"protocol": "https",
+					"host": [
+						"sos1718-sep-vvp",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"mortality-stats"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2013"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Recurso concreto / 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Obteniendo todos los datos\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats/portugal"
+			},
+			"response": []
+		},
+		{
+			"name": "POST  / 400 Bad Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 400\"] = responseCode.code === 400;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"country\": \"portugal\",\n    \"year\": 2013,\n    \"transport\": 7.8,\n    \"suicide\": 11.3,\n    cancer\": 26.7\n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Datos erróneos / 422 Unprocessable Entity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 422\"] = responseCode.code === 422;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"country\": \"portugal\",\n    \"year\": 2013,\n    \"transport\": 7.8,\n    \"suicide\": 11.3,\n    \"cance\": 26.7\n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Ya existente / 201 Created",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 201\"] = responseCode.code === 201;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"country\": \"Germany\",\n    \"year\": 2013,\n    \"transport\": 5.8,\n    \"suicide\": 15.3,\n    \"cancer\": 32.4\n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Collection con Germany incluido/ 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Obteniendo todos los datos\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats/"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Correcto / 409 Conflict",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 409\"] = responseCode.code === 409;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"country\": \"austria\",\n    \"year\": 2013,\n    \"transport\": 5.8,\n    \"suicide\": 15.3,\n    \"cancer\": 32.4\n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Indebido / 405 Method not allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 405\"] = responseCode.code === 405;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"country\": \"portugal\",\n    \"year\": 2013,\n    \"transport\": 7.8,\n    \"suicide\": 11.3,\n    \"cancer\": 26.7\n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats/portugal"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Indebido / 405 Methos not allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 405\"] = responseCode.code === 405;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"country\": \"portugal\",\n    \"year\": 2013,\n    \"transport\": 7.8,\n    \"suicide\": 11.3,\n    \"cancer\": 26.7\n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Correcto / 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"country\": \"austria\",\n  \"year\": 2015,\n  \"transport\": 5.8,\n  \"suicide\": 15.3,\n  \"cancer\": 32.4\n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats/austria"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso concreto / 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"country\": \"austria\",\n  \"year\": 2015,\n  \"transport\": 5.8,\n  \"suicide\": 15.3,\n  \"cancer\": 32.4\n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats/austria/2015"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso por country / 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"country\": \"austria\",\n  \"year\": 2015,\n  \"transport\": 5.8,\n  \"suicide\": 15.3,\n  \"cancer\": 32.4\n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats/austria"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso por year / 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"country\": \"austria\",\n  \"year\": 2015,\n  \"transport\": 5.8,\n  \"suicide\": 15.3,\n  \"cancer\": 32.4\n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats/2015"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Fata de datos / 400 Bad Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 400\"] = responseCode.code === 400;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"country\": \"austria\",\n  \"year\": 2015,\n  \"transport\": 5.8,\n  \"suicide\": 15.3,\n  \n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats/austria"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Datos incorrectos / 422 Unprocessable Entity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 422\"] = responseCode.code === 422;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"country\": \"austria\",\n  \"year\": 2015,\n  \"transport\": 5.8,\n  \"suicide\": 15.3,\n  \"mortality-cancer\": 32.4\n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats/austria"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Recurso dato no encontrado / 404 not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"country\": \"austria\",\n  \"year\": 2015,\n  \"transport\": 5.8,\n  \"suicide\": 15.3,\n  \"mortality-cancer\": 32.4\n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats/germany"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Recurso dato no encontrado year / 404 not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"country\": \"austria\",\n  \"year\": 2015,\n  \"transport\": 5.8,\n  \"suicide\": 15.3,\n  \"mortality-cancer\": 32.4\n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats/2016"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Recurso country / 20 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"country\": \"austria\",\n  \"year\": 2015,\n  \"transport\": 5.8,\n  \"suicide\": 15.3,\n  \"mortality-cancer\": 32.4\n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats/austria"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Recurso year / 20 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"country\": \"austria\",\n  \"year\": 2015,\n  \"transport\": 5.8,\n  \"suicide\": 15.3,\n  \"mortality-cancer\": 32.4\n}"
+				},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats/2015"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Collection con 3 elementos menos / 200 OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Obteniendo todos los datos\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Hay trece datos en total\"] = jsonData.length === 14;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "https://sos1718-sep-vvp.herokuapp.com/api/v1/mortality-stats"
+			},
+			"response": []
+		}
+	]
+}
