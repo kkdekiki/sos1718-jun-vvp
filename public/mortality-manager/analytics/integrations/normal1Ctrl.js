@@ -4,7 +4,7 @@ angular.module("managerApp").
 controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($scope, $http, $httpParamSerializer) {
 
 
-    var suicide = [];
+    var country = [];
     var age = [];
    
 
@@ -12,7 +12,7 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
     $http
         .get("api/v1/mortality-stats").then(function(res) {
             for (var i = 0; i < res.data.length; i++) {
-                suicide.push(res.data[i].suicide);
+                country.push(res.data[i].country);
                 
             }
 
@@ -68,29 +68,29 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
                         borderColor: "#fff"
                     },
                     series: [{
-                            values: suicide[0],
+                            values: country[0],
                             text: age[0],
                             backgroundColor: "#2870B1"
                         },
                         {
-                            values: suicide[1],
+                            values: country[1],
                             text: age[1],
                             backgroundColor: "#BB1FA8"
                         },
                         {
-                            values: suicide[2],
+                            values: country[2],
                             text: age[2],
                             backgroundColor: "#7E971D"
                         },
 
                         {
-                            values: suicide[3],
+                            values: country[3],
                             text: age[3],
                             backgroundColor: "#FFA72A"
 
                         },
                         {
-                            values: suicide[4],
+                            values: country[4],
                             text: age[4],
                             backgroundColor: "#54004A"
                         }
