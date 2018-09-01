@@ -6,13 +6,13 @@ angular
     .module("managerApp")
     .controller("integration3Ctrl", ["$scope", "$http", function($scope, $http) {
         
-        var occu = [];
-        var can = [];
+        var occupation = ['Occupation'];
+        var cancer = ['Cancer'];
         
 
         $http.get("https://sos1718-10.herokuapp.com/api/v1/buses").then(function(response) {
             for (var j = 0; j < response.data.length; j++) {
-                occu.push(response.data[j].occupation);
+                occupation.push(response.data[j].occupation);
                 console.log(response.data);
             }
         
@@ -22,17 +22,17 @@ angular
             $http.get("/api/v1/mortality-stats").then(function(response) {
 
                 for (var i = 0; i < response.data.length; i++) {
-                    can.push(response.data[i].cancer);
+                    cancer.push(response.data[i].cancer);
                     
-                    console.log(can);
-                    console.log(occu);
+                    console.log(cancer);
+                    console.log(occupation);
                 
                 }
-                var chartc3 = c3.generate({
+                var chart = c3.generate({
                     data: {
                         columns: [
-                            occu,
-                            can
+                            occupation,
+                            cancer
 
                         ],
                         types: {
@@ -41,7 +41,7 @@ angular
 
                         },
                         groups: [
-                            ['occupation', 'cancer']
+                            ['Occupation', 'Cancer']
                         ]
                     }
                 });
