@@ -5,7 +5,7 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
 
 
     var suicide = [];
-    var title = [];
+    var age = [];
    
 
 
@@ -17,11 +17,9 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
             }
 
             $http
-                .get("/normal1")
-                .then(function(response) {
-                    for (var i = 0; i < response.data.length; i++) {
-
-                        title.push(response.data[i].title);
+                .get("https://sos1718-10.herokuapp.com/api/v1/motogp-stats").then(function(res) {
+            for (var i = 0; i < res.data.length; i++) {
+                age.push(res.data[i].age);
                        
 
                     }
@@ -31,7 +29,7 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
                 var myConfig = {
                     type: "pie",
                     backgroundColor: "#f1f1f1 #ffffff",
-                    title: {
+                    age: {
                         text: "Countries Population",
                         backgroundColor: "#052C4E"
                     },
@@ -71,29 +69,29 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
                     },
                     series: [{
                             values: suicide[0],
-                            text: title[0],
+                            text: age[0],
                             backgroundColor: "#2870B1"
                         },
                         {
                             values: suicide[1],
-                            text: title[1],
+                            text: age[1],
                             backgroundColor: "#BB1FA8"
                         },
                         {
                             values: suicide[2],
-                            text: title[2],
+                            text: age[2],
                             backgroundColor: "#7E971D"
                         },
 
                         {
                             values: suicide[3],
-                            text: title[3],
+                            text: age[3],
                             backgroundColor: "#FFA72A"
 
                         },
                         {
                             values: suicide[4],
-                            text: title[4],
+                            text: age[4],
                             backgroundColor: "#54004A"
                         }
                     ]
