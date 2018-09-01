@@ -4,25 +4,24 @@ angular.module("managerApp").
 controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($scope, $http, $httpParamSerializer) {
 
 
-    var country = [];
-    var age = [];
-   
+      $http.get("api/v1/mortality-stats").then(function(responseBuses) {
+            $http.get("https://sos1718-10.herokuapp.com/api/v1/motogp-statsl").then(function(responseRest) {
+               
+                var age = [];
+                var country=[];
+
+                for (var i = 0; i < 5; i++) {
 
 
-    $http
-        .get("api/v1/mortality-stats").then(function(res) {
-            for (var i = 0; i < res.data.length; i++) {
-                country.push(res.data[i].country);
-                
-            }
 
-            $http
-                .get("https://sos1718-10.herokuapp.com/api/v1/motogp-stats").then(function(res) {
-            for (var i = 0; i < res.data.length; i++) {
-                age.push(res.data[i].age);
-                       
+                    age.push([responseRest.data[i].age]);
+                    country.push(responseRest.data[i].country);
+                    
 
-                    }
+
+                }
+        
+         
 
                     zingchart.THEME = "classic";
 
@@ -30,7 +29,7 @@ controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
                     type: "pie",
                     backgroundColor: "#f1f1f1 #ffffff",
                     age: {
-                        text: "Countries Population",
+                        text: "Countries age",
                         backgroundColor: "#052C4E"
                     },
                     
