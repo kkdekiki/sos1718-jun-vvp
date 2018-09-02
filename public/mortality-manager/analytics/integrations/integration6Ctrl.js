@@ -36,7 +36,7 @@ angular
                         ],
                         types: {
                             data1: 'step',
-                            data2: 'step'
+                            data2: 'area-step'
                         }
                     }
                 });
