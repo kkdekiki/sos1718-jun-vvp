@@ -38,7 +38,7 @@ angular
                 var data = [{
                     type: 'table',
                     header: {
-                    values: [["EXPENSES"], ["Q1"],["Q2"], ["Q3"], ["Q4"]],
+                    values: [["VARIABLE"], ["Valores01"],["Valores02"], ["Valores03"], ["Valores04"]],
                     align: "center",
                     line: {width: 1, color: 'black'},
                     fill: {color: "grey"},
