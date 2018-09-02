@@ -29,7 +29,6 @@ angular
                 }
 
                 var values = [
-                    ['Win', 'Age', 'Points', 'Suicide', 'Transport'],
                     [win[0], age[0], point[0], suicide[0], transport[0]],
                     [win[1], age[1], point[1], suicide[1], transport[1]],
                     [win[2], age[2], point[2], suicide[2], transport[2]],
@@ -38,7 +37,7 @@ angular
                 var data = [{
                     type: 'table',
                     header: {
-                    values: [["VARIABLE"], ["Valores01"],["Valores02"], ["Valores03"], ["Valores04"]],
+                    values: [["Win"],["Age"], ["Suicide"], ["Transport"]],
                     align: "center",
                     line: {width: 1, color: 'black'},
                     fill: {color: "grey"},

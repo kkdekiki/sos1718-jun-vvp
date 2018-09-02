@@ -1,12 +1,13 @@
-/*global Highcharts, angular*/
+/*global RGraph, angular*/
 
 angular.module("managerApp").
 controller("normal2Ctrl", ["$scope", "$http", "$httpParamSerializer", function($scope, $http, $httpParamSerializer) {
 
     var datos = [];
-    var datos1 = [];
-    var countryv = [];
-    var transport = [];
+
+    var country = [];
+    var suicide = [];
+    var cancer = [];
 
     $http
         .get("api/v1/mortality-stats")
@@ -17,100 +18,61 @@ controller("normal2Ctrl", ["$scope", "$http", "$httpParamSerializer", function($
 
                 var x = res.data[i];
 
-                countryv.push(x.country);
-                transport.push(x.transport);
-
-
+                country.push(x.country);
+                suicide.push(x.suicide);
+                cancer.push(x.cancer);
 
             }
-        });
-    $http
-        .get("https://api.carbonintensity.org.uk/intensity/date")
-        .then(function(response) {
-                            console.log("aaaaa");
-
-            for (var i = 0; i < response.data.data.length; i++) {
-
-                var x = response.data.data[i];
-                datos1.push(Number(x.intensity.actual));
-            }
-
-            console.log(datos1);
-            console.log(transport);
 
 
-            Highcharts.chart('container', {
-                chart: {
-                    type: 'scatter',
-                    zoomType: 'xy'
-                },
-                title: {
-                    text: 'Transport and Intesity actual to carbon'
-                },
-                subtitle: {
-                    text: ''
-                },
-                xAxis: {
-                    title: {
-                        enabled: true,
-                        text: 'Data'
-                    },
-                    startOnTick: true,
-                    endOnTick: true,
-                    showLastLabel: true
-                },
-                yAxis: {
-                    title: {
-                        text: 'Data'
-                    }
-                },
-                legend: {
-                    layout: 'vertical',
-                    align: 'left',
-                    verticalAlign: 'top',
-                    x: 100,
-                    y: 70,
-                    floating: true,
-                    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
-                    borderWidth: 1
-                },
-                plotOptions: {
-                    scatter: {
-                        marker: {
-                            radius: 5,
-                            states: {
-                                hover: {
-                                    enabled: true,
-                                    lineColor: 'rgb(100,100,100)'
-                                }
-                            }
-                        },
-                        states: {
-                            hover: {
-                                marker: {
-                                    enabled: false
-                                }
-                            }
-                        },
-                        tooltip: {
-                            headerFormat: '<b>{series.name}</b><br>',
-                            pointFormat: '{point.x} data, {point.y} data'
+            $http
+                .get("https://ipapi.co/8.8.8.8/json/")
+                .then(function(response) {
+                    datos = response.data;
+
+                    console.log(response.data);
+
+
+                    new RGraph.SVG.Rose({
+                        id: 'chart-container',
+                        data: [
+                            [
+                                [suicide[0]], cancer[0]
+                            ],
+                            [
+                                [suicide[1]], cancer[1]
+                            ],
+                            [
+                                [suicide[2]], cancer[2]
+                            ],
+                            [
+                                [suicide[3]], cancer[3]
+                            ],
+                            [
+                                [suicide[4]], cancer[4]
+                            ],
+                            [
+                                [datos.latitude], cancer[4]
+                            ]
+                        ],
+                        options: {
+                            backgroundGridRadialsCount: 0,
+                            colorsOpacity: 0.8,
+                            colors: ['red', 'blue', '#f6f'],
+                            strokestyle: 'rgba(0,0,0,0)',
+                            linewidth: 1,
+                            variant: 'non-equi-angular',
+                            margin: 0.05,
+                            labels: [country[0], country[1], country[2], country[3], country[4], datos.region],
+                            tooltips: [
+                                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+                                'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+                                'u', 'v', 'w', 'x', 'y', 'z', 'aa', 'bb', 'cc', 'dd'
+                            ]
                         }
-                    }
-                },
-                series: [{
-                    name: 'Intensity Actual to Carbon',
-                    color: 'rgba(223, 83, 83, .5)',
-                    data: datos1
+                    }).draw();
 
-                }, {
-                    name: 'Transport Mortality',
-                    color: 'rgba(119, 152, 191, .5)',
-                    data: transport
-                }]
-            });
-
-
+                });
 
 
         });

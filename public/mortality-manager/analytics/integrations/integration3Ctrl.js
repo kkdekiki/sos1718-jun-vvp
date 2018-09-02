@@ -37,7 +37,7 @@ angular
                         ],
                         types: {
                             data1: 'area',
-                            data2: 'area'
+                            data2: 'area-spline'
 
                         },
                         groups: [

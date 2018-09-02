@@ -1,108 +1,119 @@
-/*global zingchart, angular*/
+/*global Highcharts, angular*/
 
 angular.module("managerApp").
 controller("normal1Ctrl", ["$scope", "$http", "$httpParamSerializer", function($scope, $http, $httpParamSerializer) {
 
+    var datos = [];
+    var datos1 = [];
+    var countryv = [];
+    var transport = [];
 
-      $http.get("api/v1/mortality-stats").then(function(responseMort) {
-            $http.get("https://sos1718-10.herokuapp.com/api/v1/motogp-stats").then(function(responseRest) {
-               
-                var age = [];
-                var country=[];
-
-                for (var i = 0; i < 5; i++) {
-
-
-
-                    age.push([responseRest.data[i].age]);
-                    country.push(responseMort.data[i].country);
-                    
+    $http
+        .get("api/v1/mortality-stats")
+        .then(function(res) {
 
 
-                }
-        
-         
+            for (var i = 0; i < res.data.length; i++) {
 
-                    zingchart.THEME = "classic";
+                var x = res.data[i];
 
-                var myConfig = {
-                    type: "pie",
-                    backgroundColor: "#f1f1f1 #ffffff",
-                    age: {
-                        text: "Countries age",
-                        backgroundColor: "#052C4E"
+                countryv.push(x.country);
+                transport.push(x.transport);
+
+
+
+            }
+        });
+    $http
+        .get("https://api.carbonintensity.org.uk/intensity/date")
+        .then(function(response) {
+                            console.log("aaaaa");
+
+            for (var i = 0; i < response.data.data.length; i++) {
+
+                var x = response.data.data[i];
+                datos1.push(Number(x.intensity.actual));
+            }
+
+            console.log(datos1);
+            console.log(transport);
+
+
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'scatter',
+                    zoomType: 'xy'
+                },
+                title: {
+                    text: 'Transport and Intesity actual to carbon'
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    title: {
+                        enabled: true,
+                        text: 'Data'
                     },
-                    
-                    legend: {
-                        layout: "h",
-                        align: "center",
-                        verticalAlign: "bottom",
-                        toggleAction: "remove",
-                        header: {
-                            text: "County",
-                            backgroundColor: "#052C4E"
+                    startOnTick: true,
+                    endOnTick: true,
+                    showLastLabel: true
+                },
+                yAxis: {
+                    title: {
+                        text: 'Data'
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    verticalAlign: 'top',
+                    x: 100,
+                    y: 70,
+                    floating: true,
+                    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+                    borderWidth: 1
+                },
+                plotOptions: {
+                    scatter: {
+                        marker: {
+                            radius: 5,
+                            states: {
+                                hover: {
+                                    enabled: true,
+                                    lineColor: 'rgb(100,100,100)'
+                                }
+                            }
                         },
-                        shadow: 0
-                    },
-                    plotarea: {
-                        y: 150
-                    },
-                    plot: {
-                        refAngle: 180,
-                        size: 250,
-                        valueBox: {
-                            placement: "in",
-                            offsetR: 20
+                        states: {
+                            hover: {
+                                marker: {
+                                    enabled: false
+                                }
+                            }
+                        },
+                        tooltip: {
+                            headerFormat: '<b>{series.name}</b><br>',
+                            pointFormat: '{point.x} data, {point.y} data'
                         }
-                    },
-                    scaleR: {
-                        aperture: 180
-                    },
-                    tooltip: {
-                        text: "%t<br>Deliveries: %v<br>Percent of Shirt %npv%",
-                        textAlign: "left",
-                        shadow: 0,
-                        borderRadius: 4,
-                        borderWidth: 2,
-                        borderColor: "#fff"
-                    },
-                    series: [{
-                            values: age[0],
-                            text: country[0],
-                            backgroundColor: "#2870B1"
-                        },
-                        {
-                            values: age[1],
-                            text: country[1],
-                            backgroundColor: "#BB1FA8"
-                        },
-                        {
-                            values: age[2],
-                            text: country[2],
-                            backgroundColor: "#7E971D"
-                        },
+                    }
+                },
+                series: [{
+                    name: 'Intensity Actual to Carbon',
+                    color: 'rgba(223, 83, 83, .5)',
+                    data: datos1
 
-                        {
-                            values: age[3],
-                            text: country[3],
-                            backgroundColor: "#FFA72A"
-
-                        },
-                        {
-                            values: age[4],
-                            text: country[4],
-                            backgroundColor: "#54004A"
-                        }
-                    ]
-                };
-
-                zingchart.render({
-                    id: 'myChart',
-                    data: myConfig,
-                });
-
-
+                }, {
+                    name: 'Transport Mortality',
+                    color: 'rgba(119, 152, 191, .5)',
+                    data: transport
+                }]
             });
 
+
+
+
         });
-    }]);
+
+
+}]);

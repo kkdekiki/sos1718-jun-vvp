@@ -46,21 +46,17 @@ angular.module("managerApp", ["ngRoute"]).config(function($routeProvider) {
         templateUrl: "/mortality-manager/analytics/integrations/integration4.html",
         controller: "integration4Ctrl"
         
+        }).when("/analytics/mortality-stats/integration5", {
+        templateUrl: "/mortality-manager/analytics/integrations/integration5.html",
+        controller: "integration5Ctrl"
+        
         }).when("/analytics/mortality-stats/normal1", {
         templateUrl: "/mortality-manager/analytics/integrations/normal1.html",
         controller: "normal1Ctrl"
         
         }).when("/analytics/mortality-stats/normal2", {
-        templateUrl: "/mortality-manager/analytics/integrations/normal2.html",
-        controller: "normal2Ctrl"
-        
-        }).when("/analytics/mortality-stats/normal3", {
         templateUrl: "/mortality-manager/analytics/integrations/normal3.html",
         controller: "normal3Ctrl"
-        
-        }).when("/analytics/mortality-stats/normal4", {
-        templateUrl: "/mortality-manager/analytics/integrations/normal4.html",
-        controller: "normal4Ctrl"
         
         }).when("/integrations", {
         templateUrl: "/integrations.html"
