@@ -241,7 +241,7 @@
         };
         $scope.maxSize = 5; //Number of pages buttons to show
 
-        $scope.offset = 0;
+       // $scope.offset = 0;
 
 
 
