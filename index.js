@@ -39,3 +39,8 @@ app.use("/proxy1", (req, res) =>{
     req.pipe(request(url)).pipe(res);
 });
 
+var apiProxy2 = "https://sos1718-13.herokuapp.com/api/v1/f-one-drivers";
+app.use("/integratio7", (req, res) =>{
+    var url = apiProxy2 + req.url ; 
+    req.pipe(request(url)).pipe(res);
+});

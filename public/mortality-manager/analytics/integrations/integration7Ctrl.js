@@ -10,7 +10,7 @@ angular
         var suicide = [];
         var transport = [];
 
-        $http.get("https://sos1718-13.herokuapp.com/api/v1/f-one-drivers").then(function(response) {
+        $http.get("/integration7").then(function(response) {
 
             for (var j = 0; j < response.data.length; j++) {
                 age.push(response.data[j].age);
