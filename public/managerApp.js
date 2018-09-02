@@ -34,6 +34,14 @@ angular.module("managerApp", ["ngRoute"]).config(function($routeProvider) {
         templateUrl: "/mortality-manager/analytics/integrations/integration3.html",
         controller: "integration3Ctrl"
         
+        }).when("/analytics/mortality-stats/integration4", {
+        templateUrl: "/mortality-manager/analytics/integrations/integration4.html",
+        controller: "integration4Ctrl"
+        
+        }).when("/analytics/mortality-stats/integration5", {
+        templateUrl: "/mortality-manager/analytics/integrations/integration5.html",
+        controller: "integration5Ctrl"
+        
         }).when("/analytics/mortality-stats/integration6", {
         templateUrl: "/mortality-manager/analytics/integrations/integration6.html",
         controller: "integration6Ctrl"
@@ -42,13 +50,6 @@ angular.module("managerApp", ["ngRoute"]).config(function($routeProvider) {
         templateUrl: "/mortality-manager/analytics/integrations/integration7.html",
         controller: "integration7Ctrl"
         
-        }).when("/analytics/mortality-stats/integration4", {
-        templateUrl: "/mortality-manager/analytics/integrations/integration4.html",
-        controller: "integration4Ctrl"
-        
-        }).when("/analytics/mortality-stats/integration5", {
-        templateUrl: "/mortality-manager/analytics/integrations/integration5.html",
-        controller: "integration5Ctrl"
         
         }).when("/analytics/mortality-stats/normal1", {
         templateUrl: "/mortality-manager/analytics/integrations/normal1.html",
