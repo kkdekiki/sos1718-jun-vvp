@@ -56,8 +56,8 @@ angular.module("managerApp", ["ngRoute"]).config(function($routeProvider) {
         controller: "normal1Ctrl"
         
         }).when("/analytics/mortality-stats/normal2", {
-        templateUrl: "/mortality-manager/analytics/integrations/normal3.html",
-        controller: "normal3Ctrl"
+        templateUrl: "/mortality-manager/analytics/integrations/normal2.html",
+        controller: "normal2Ctrl"
         
         }).when("/integrations", {
         templateUrl: "/integrations.html"
