@@ -251,7 +251,7 @@
             $scope.offset = pageNo * viewby - parseInt($scope.viewby);
             $scope.limit = $scope.viewby;
             $http
-                .get($scope.url + "&limit=" + $scope.limit + "&offset=" + $scope.offset)
+                .get($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset)
                 .then(function(response) {
                     $scope.mortality = response.data;
                 });
@@ -263,7 +263,7 @@
             console.log($scope.offset);
             $scope.limit = $scope.viewby;
             $http
-                .get($scope.url + "&limit=" + $scope.limit + "&offset=" + $scope.offset)
+                .get($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset)
                 .then(function(response) {
                     $scope.mortality = response.data;
                 });
@@ -275,7 +275,7 @@
             $scope.offset -= viewby;
 
             $http
-                .get($scope.url + "&limit=" + $scope.limit + "&offset=" + $scope.offset)
+                .get($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset)
                 .then(function(response) {
                     $scope.mortality = response.data;
                 });
@@ -303,7 +303,7 @@
 
 
             $http
-                .get($scope.url + "&limit=" + num + "&offset=" + $scope.offset)
+                .get($scope.url + "?limit=" + num + "&offset=" + $scope.offset)
                 .then(function(response) {
                     $scope.mortality = response.data;
                 });
