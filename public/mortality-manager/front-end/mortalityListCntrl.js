@@ -233,15 +233,14 @@
         //Paginación
         $scope.viewby = 0;
         $scope.totalItems = function() {
-            return $scope.mortalitys.length;
+            return $scope.mortality.length;
         };
         $scope.currentPage = 1;
         $scope.itemsPerPage = function() {
             return $scope.limit;
         };
         $scope.maxSize = 5; //Number of pages buttons to show
-
-       // $scope.offset = 0;
+        $scope.offset = 0;
 
 
 
